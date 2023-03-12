@@ -1,3 +1,8 @@
+package com.bridgelabz;
+
+import java.util.Scanner;
+
+
 public class AddressBook {
     private ContactPerson[] contacts;
     private int numContacts;
@@ -38,44 +43,61 @@ public class AddressBook {
 
     public static void main(String[] args) {
         AddressBook addressBook = new AddressBook();
+        Scanner scanner = new Scanner(System.in);
 
+        // Add contacts
         addressBook.addContact("John Doe", "555-1234", "johndoe@example.com");
         addressBook.addContact("Jane Smith", "555-5678", "janesmith@example.com");
 
-        addressBook.editContact("John Doe", "555-4321", "johndoe2@example.com");
+        // Print contacts before editing
+        System.out.println("Contacts before editing:");
+        addressBook.printContacts();
 
+        // Get user input for editing a contact
+        System.out.print("Enter name of contact to edit: ");
+        String name = scanner.nextLine();
+        System.out.print("Enter new phone number: ");
+        String phoneNumber = scanner.nextLine();
+        System.out.print("Enter new email address: ");
+        String emailAddress = scanner.nextLine();
+
+        // Edit the contact
+        addressBook.editContact(name, phoneNumber, emailAddress);
+
+        // Print contacts after editing
+        System.out.println("Contacts after editing:");
         addressBook.printContacts();
     }
-}
 
-class ContactPerson {
-    private String name;
-    private String phoneNumber;
-    private String email;
+    class ContactPerson {
+        private String name;
+        private String phoneNumber;
+        private String email;
 
-    public ContactPerson(String name, String phoneNumber, String email) {
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-    }
+        public ContactPerson(String name, String phoneNumber, String email) {
+            this.name = name;
+            this.phoneNumber = phoneNumber;
+            this.email = email;
+        }
 
-    public String getName() {
-        return this.name;
-    }
+        public String getName() {
+            return this.name;
+        }
 
-    public String getPhoneNumber() {
-        return this.phoneNumber;
-    }
+        public String getPhoneNumber() {
+            return this.phoneNumber;
+        }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+        public void setPhoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
 
-    public String getEmail() {
-        return this.email;
-    }
+        public String getEmail() {
+            return this.email;
+        }
 
-    public void setEmail(String email) {
-        this.email = email;
+        public void setEmail(String email) {
+            this.email = email;
+        }
     }
 }
